@@ -432,7 +432,7 @@
     data.oldY = data.currentY;
 
     // get current touch or mouse position
-    if (e.touches !== undefined && e.touches.length > 0){
+    if (e.touches !== undefined && e.touches.length == 1){
       data.currentX = e.touches[0].clientX || 0;
       data.currentY = e.touches[0].clientY || 0;
     } else {
@@ -584,12 +584,12 @@
     var h = Math.floor(data.height || data.frameHeight || data.target.innerHeight());
     var a = w / h;
     return {
-      width: w, 
+      width: w,
       height: h,
       aspect: a
     }
   }
-  
+
   Spin.calculateInnerLayout = function(data){
     // outer container size
     var w = Math.floor(data.width || data.frameWidth || data.target.innerWidth());
@@ -674,7 +674,7 @@
 
     var w = Math.floor(data.width || data.frameWidth || data.target.innerWidth());
     var h = Math.floor(data.height || data.frameHeight || data.target.innerHeight());
-    
+
     if (data.responsive && (typeof window.getComputedStyle === 'function')) {
       var style = getComputedStyle(data.target[0]);
       if (style.width) {
