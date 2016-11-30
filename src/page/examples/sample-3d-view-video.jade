@@ -1,0 +1,43 @@
+extends ../layouts/example.jade
+block view
+  video#video(style="display: none;")
+    source(src="/images/3d.mp4")
+  div.spritespin
+block source
+  a(name="Remarks")
+  .padding
+    p This example uses a video as source and draws the frames in a canvas to mimic a 3D like experience.
+  a(name="Html" index=3)
+  viewcode
+  a(name="Javascript")
+  script(type='text/javascript').
+    $(function(){
+      $('.spritespin').spritespin({
+        // need a first reference image, for measurements etc
+        // video file is specified up in the block view.
+        source: '/images/3d.jpg',
+        // width and height of the display
+        // video files must have sizes dividable by 2
+        width: 400,
+        height: 224,
+        // the video length/time in seconds in this case
+        lanes: 12,
+        // the video framerate in this case
+        frames: 24,
+        // interaction sensitivity (and direction) modifier for horizontal movement
+        sense: 1,
+        // interaction sensitivity (and direction) modifier for vertical movement
+        senseLane: -2,
+
+        // the initial lane number
+        lane: 6,
+        // the initial frame number (within the lane)
+        frame: 0,
+        // disable autostart of the animation
+        animate: false,
+        // disable detect subsampling
+        detectSubsampling: false,
+        // mods
+        mods: ['drag', 'ease', 'v360']
+      });
+    });
